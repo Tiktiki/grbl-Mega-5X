@@ -26,7 +26,7 @@
 #ifndef cpu_map_h
 #define cpu_map_h
 
-#ifdef CPU_MAP_2560_RAMPS_BOARD // (Arduino Mega 2560) with Ramps 1.4 Board
+#ifdef CPU_MAP_2560_EXTERNAL // (Arduino Mega 2560)
   #include "nuts_bolts.h"
 
   // Serial port interrupt vectors
@@ -137,44 +137,44 @@
   #define STEPPER_DISABLE_PIN(i) _PIN(STEPPER_DISABLE_PORT_##i)
 
   // Define homing/hard limit switch input pins and limit interrupt vectors.
-  #define MIN_LIMIT_PORT_0 E
-  #define MIN_LIMIT_PORT_1 J
-  #define MIN_LIMIT_PORT_2 D
-  #if N_AXIS > 3
-    #define MIN_LIMIT_PORT_3 L
-  #endif
-  #if N_AXIS > 4
-    #define MIN_LIMIT_PORT_4 L
-  #endif
-  #if N_AXIS > 5
-    #define MIN_LIMIT_PORT_5 F // (Ramps Aux-1 D57)
-  #endif
-  #define MIN_LIMIT_BIT_0 5 // X Limit Min - Pin D3
-  #define MIN_LIMIT_BIT_1 1 // Y Limit Min - Pin D14
-  #define MIN_LIMIT_BIT_2 3 // Z Limit Min - Pin D18
-  #if N_AXIS > 3
-    #define MIN_LIMIT_BIT_3 7 // Axis number 4 : RAMPS AUX2 pin D42
-  #endif
-  #if N_AXIS > 4
-    #define MIN_LIMIT_BIT_4 5 // Axis number 5 : RAMPS AUX2 pin D44
-  #endif
-  #if N_AXIS > 5
-    #define MIN_LIMIT_BIT_5 3 // Axis number 6 : RAMPS AUX2 pin D57
-  #endif
-  #define _MIN_LIMIT_BIT(i) MIN_LIMIT_BIT_##i
-  #define MIN_LIMIT_BIT(i) _MIN_LIMIT_BIT(i)
-  #define MIN_LIMIT_DDR(i) _DDR(MIN_LIMIT_PORT_##i)
-  #define MIN_LIMIT_PORT(i) _PORT(MIN_LIMIT_PORT_##i)
-  #define MIN_LIMIT_PIN(i) _PIN(MIN_LIMIT_PORT_##i)
+  //#define MIN_LIMIT_PORT_0 E
+  //#define MIN_LIMIT_PORT_1 J
+  //#define MIN_LIMIT_PORT_2 D
+  //#if N_AXIS > 3
+  //  #define MIN_LIMIT_PORT_3 L
+  //#endif
+  //#if N_AXIS > 4
+  //  #define MIN_LIMIT_PORT_4 L
+  //#endif
+  //#if N_AXIS > 5
+  //  #define MIN_LIMIT_PORT_5 F // (Ramps Aux-1 D57)
+  //#endif
+  //#define MIN_LIMIT_BIT_0 5 // X Limit Min - Pin D3
+  //#define MIN_LIMIT_BIT_1 1 // Y Limit Min - Pin D14
+  //#define MIN_LIMIT_BIT_2 3 // Z Limit Min - Pin D18
+  //#if N_AXIS > 3
+  //  #define MIN_LIMIT_BIT_3 7 // Axis number 4 : RAMPS AUX2 pin D42
+  //#endif
+  //#if N_AXIS > 4
+  //  #define MIN_LIMIT_BIT_4 5 // Axis number 5 : RAMPS AUX2 pin D44
+  //#endif
+  //#if N_AXIS > 5
+  //  #define MIN_LIMIT_BIT_5 3 // Axis number 6 : RAMPS AUX2 pin D57
+  //#endif
+  //#define _MIN_LIMIT_BIT(i) MIN_LIMIT_BIT_##i
+  //#define MIN_LIMIT_BIT(i) _MIN_LIMIT_BIT(i)
+  //#define MIN_LIMIT_DDR(i) _DDR(MIN_LIMIT_PORT_##i)
+  //#define MIN_LIMIT_PORT(i) _PORT(MIN_LIMIT_PORT_##i)
+  //#define MIN_LIMIT_PIN(i) _PIN(MIN_LIMIT_PORT_##i)
 
   #define MAX_LIMIT_PORT_0 E
   #define MAX_LIMIT_PORT_1 J
   #define MAX_LIMIT_PORT_2 D
   #if N_AXIS > 3
-    #define MAX_LIMIT_PORT_3 G
+    #define MAX_LIMIT_PORT_3 J
   #endif
   #if N_AXIS > 4
-    #define MAX_LIMIT_PORT_4 F
+    #define MAX_LIMIT_PORT_4 D
   #endif
   #if N_AXIS > 5
     #define MAX_LIMIT_PORT_5 F // (Ramps Aux-3 D58)
@@ -183,10 +183,10 @@
   #define MAX_LIMIT_BIT_1 0 // Y Limit Max - Pin D15
   #define MAX_LIMIT_BIT_2 2 // Z Limit Max - Pin D19
   #if N_AXIS > 3
-    #define MAX_LIMIT_BIT_3 1 // Axis number 4 : RAMPS AUX2 pin D40
+    #define MAX_LIMIT_BIT_3 1 // Y2 Limit Max - Pin D14
   #endif
   #if N_AXIS > 4
-    #define MAX_LIMIT_BIT_4 5 // Axis number 5 : RAMPS AUX2 pin D59
+    #define MAX_LIMIT_BIT_4 3 // A Limit Max - Pin D18
   #endif
   #if N_AXIS > 5
     #define MAX_LIMIT_BIT_5 4 // Axis number 6 : RAMPS AUX2 pin D58
@@ -300,7 +300,7 @@
     #error "You must define SPINDLE_PWM_ON_D8 or SPINDLE_PWM_ON_D6 in config.h"
   #endif
 
-#endif // CPU_MAP_2560_RAMPS_BOARD
+#endif // CPU_MAP_2560_EXTERNAL
 
 /*
 #ifdef CPU_MAP_CUSTOM_PROC
