@@ -55,14 +55,14 @@
   #if N_AXIS > 5
     #define STEP_PORT_5 L // Axis number 6 (Ramps Aux-3 D49)
   #endif
-  #define STEP_BIT_0 0  // X Step - Pin A0
+  #define STEP_BIT_0 1  // X Step - Pin A0
   #define STEP_BIT_1 6  // Y Step - Pin A6
   #define STEP_BIT_2 3  // Z Step - Pin D46
   #if N_AXIS > 3
     #define STEP_BIT_3 4 // Axis number 4 Step - Pin D26
   #endif
   #if N_AXIS > 4
-    #define STEP_BIT_4 1 // Axis number 5 Step - Pin D36
+    #define STEP_BIT_4 3 // Axis number 5 Step - Pin D36
   #endif
   #if N_AXIS > 5
     #define STEP_BIT_5 0 // Axis number 6 Step - Pin D49
@@ -87,14 +87,14 @@
   #if N_AXIS > 5
     #define DIRECTION_PORT_5 B // Axis number 6 (Ramps Aux-3 D51)
   #endif
-  #define DIRECTION_BIT_0 1 // X Dir - Pin A1
+  #define DIRECTION_BIT_0 2 // X Dir - Pin A1
   #define DIRECTION_BIT_1 7 // Y Dir - Pin A7
   #define DIRECTION_BIT_2 1 // Z Dir - Pin D48
   #if N_AXIS > 3
     #define DIRECTION_BIT_3 6 // Axis number 4 Step - Pin D28
   #endif
   #if N_AXIS > 4
-    #define DIRECTION_BIT_4 3 // Axis number 5 Step - Pin D34
+    #define DIRECTION_BIT_4 1 // Axis number 5 Step - Pin D34
   #endif
   #if N_AXIS > 5
     #define DIRECTION_BIT_5 2 // Axis number 6 Step - Pin D51
@@ -107,9 +107,9 @@
   #define DIRECTION_PIN(i) _PIN(DIRECTION_PORT_##i)
 
   // Define stepper driver enable/disable output pin.
-  #define STEPPER_DISABLE_PORT_0 D
+  #define STEPPER_DISABLE_PORT_0 F
   #define STEPPER_DISABLE_PORT_1 F
-  #define STEPPER_DISABLE_PORT_2 K
+  #define STEPPER_DISABLE_PORT_2 L
   #if N_AXIS > 3
     #define STEPPER_DISABLE_PORT_3 A // Axis number 4 (Ramps E0)
   #endif
@@ -119,9 +119,9 @@
   #if N_AXIS > 5
     #define STEPPER_DISABLE_PORT_5 B // Axis number 5 (Ramps Aux-3 D53)
   #endif
-  #define STEPPER_DISABLE_BIT_0 7 // X Enable - Pin D38
-  #define STEPPER_DISABLE_BIT_1 2 // Y Enable - Pin A2
-  #define STEPPER_DISABLE_BIT_2 0 // Z Enable - Pin A8
+  #define STEPPER_DISABLE_BIT_0 0 // X Enable - Pin D38
+  #define STEPPER_DISABLE_BIT_1 5 // Y Enable - Pin A2
+  #define STEPPER_DISABLE_BIT_2 5 // Z Enable - Pin A8
   #if N_AXIS > 3
     #define STEPPER_DISABLE_BIT_3 2 // Axis number 4 Step - Pin D24
   #endif
