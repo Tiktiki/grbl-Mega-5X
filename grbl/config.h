@@ -37,7 +37,7 @@
 // one configuration file by placing their specific defaults and pin map at the bottom of this file.
 // If doing so, simply comment out these two defines and see instructions below.
 #define DEFAULTS_GENERIC
-#define CPU_MAP_2560_RAMPS_BOARD
+#define CPU_MAP_2560_EXTERNAL
 
 // Serial baud rate
 // #define BAUD_RATE 230400
@@ -59,11 +59,11 @@
 #endif
 #if N_AXIS > 3
   #define AXIS_4 3
-  #define AXIS_4_NAME 'A' // Letter of axis number 4
+  #define AXIS_4_NAME 'Y' // Letter of axis number 4
 #endif
 #if N_AXIS > 4
   #define AXIS_5 4
-  #define AXIS_5_NAME 'B' // Letter of axis number 5
+  #define AXIS_5_NAME 'A' // Letter of axis number 5
 #endif
 #if N_AXIS > 5
   #define AXIS_6 5
@@ -167,19 +167,11 @@
 // on separate pin, but homed in one cycle. Also, it should be noted that the function of hard limits
 // will not be affected by pin sharing.
 // NOTE: Defaults are set for a traditional 3-axis CNC machine. Z-axis first to clear, followed by X & Y.
-#if N_AXIS == 4 // 4 axis : homing
-  #define HOMING_CYCLE_0 (1<<AXIS_3) // Home Z axis first to clear workspace.
-  #define HOMING_CYCLE_1 ((1<<AXIS_1)|(1<<AXIS_2))     // OPTIONAL: uncomment to move X,Y at the same time.
-  //#define HOMING_CYCLE_1 (1<<AXIS_1) // Home X axis  // OPTIONAL: uncomment to move only X at a time.
-  //#define HOMING_CYCLE_2 (1<<AXIS_2) // Home Y axis  // OPTIONAL: uncomment to move only Y at a time.
-  //#define HOMING_CYCLE_3 (1<<AXIS_4) // Home 4th axis (A)
-#elif N_AXIS == 5 // 5 axis : homing
-  #define HOMING_CYCLE_0 (1<<AXIS_3) // Home Z axis first to clear workspace.
-  #define HOMING_CYCLE_1 ((1<<AXIS_1)|(1<<AXIS_2))     // OPTIONAL: uncomment to move X,Y at the same time.
-  //#define HOMING_CYCLE_1 (1<<AXIS_1) // Home X axis  // OPTIONAL: uncomment to move only X at a time.
-  //#define HOMING_CYCLE_2 (1<<AXIS_2) // Home Y axis  // OPTIONAL: uncomment to move only Y at a time.
-  //#define HOMING_CYCLE_3 (1<<AXIS_4) // Home 4th axis (A)
-  //#define HOMING_CYCLE_4 (1<<AXIS_5) // Home 5th axis (B)
+#if N_AXIS == 5 // 5 axis : homing
+  #define HOMING_CYCLE_0 (1<<AXIS_2) // Home Z axis first to clear workspace.
+  #define HOMING_CYCLE_1 (1<<AXIS_0) // Home X axis second.
+  #define HOMING_CYCLE_2 ((1<<AXIS_1)|(1<<AXIS_3)) // Home both Y axis.
+  #define HOMING_CYCLE_3 (1<<AXIS_4) // Home 4th axis (A).
 #elif N_AXIS == 6 // 6 axis : homing
   #define HOMING_CYCLE_0 (1<<AXIS_3) // Home Z axis first to clear workspace.
   #define HOMING_CYCLE_1 ((1<<AXIS_1)|(1<<AXIS_2))     // OPTIONAL: uncomment to move X,Y at the same time.
@@ -252,7 +244,7 @@
 // immediately forces a feed hold and then safely de-energizes the machine. Resuming is blocked until
 // the safety door is re-engaged. When it is, Grbl will re-energize the machine and then resume on the
 // previous tool path, as if nothing happened.
-#define ENABLE_SAFETY_DOOR_INPUT_PIN // Default disabled. Uncomment to enable.
+//#define ENABLE_SAFETY_DOOR_INPUT_PIN // Default disabled. Uncomment to enable.
 
 // After the safety door switch has been toggled and restored, this setting sets the power-up delay
 // between restoring the spindle and coolant and resuming the cycle.
@@ -323,7 +315,7 @@
 // allowable override values and the coarse and fine increments per command received. Please
 // note the allowable values in the descriptions following each define.
 #define DEFAULT_FEED_OVERRIDE           100 // 100%. Don't change this value.
-#define MAX_FEED_RATE_OVERRIDE          200 // Percent of programmed feed rate (100-255). Usually 120% or 200%
+#define MAX_FEED_RATE_OVERRIDE          250 // Percent of programmed feed rate (100-255). Usually 120% or 200%
 #define MIN_FEED_RATE_OVERRIDE           10 // Percent of programmed feed rate (1-100). Usually 50% or 1%
 #define FEED_OVERRIDE_COARSE_INCREMENT   10 // (1-99). Usually 10%.
 #define FEED_OVERRIDE_FINE_INCREMENT      1 // (1-99). Usually 1%.
